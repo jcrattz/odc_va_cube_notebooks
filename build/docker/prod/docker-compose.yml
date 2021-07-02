@@ -1,0 +1,28 @@
+version: '3'
+services:
+  jupyter:
+    image: ${OUT_IMG}
+    build:
+      context: ${DKR_CMP_CONTEXT}
+      dockerfile: build/docker/prod/Dockerfile
+      args:
+        - BASE_IMG=${BASE_IMG}
+    environment:
+      NBK_SERVER_PASSWORD: ${NBK_SERVER_PASSWORD}
+      ODC_DB_HOSTNAME: ${ODC_DB_HOSTNAME}
+      ODC_DB_DATABASE: ${ODC_DB_DATABASE}
+      ODC_DB_USER: ${ODC_DB_USER}
+      ODC_DB_PASSWORD: ${ODC_DB_PASSWORD}
+      # AWS env vars for loading data from S3.
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REQUEST_PAYER: requester
+    ports:
+      # 8888 is the Jupyter notebook default port
+      - ${HOST_PORT}:8888
+    networks:
+      - odc
+    restart: "no"
+networks:
+  odc:
+    external: true
