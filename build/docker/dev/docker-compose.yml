@@ -22,6 +22,7 @@ services:
       - ${HOST_PORT}:8888
     volumes:
       - ${DKR_CMP_CONTEXT}:${ROOT_DIR}
+      - ${DKR_CMP_CONTEXT}/odc_gee/config:/home/jovyan/.config/odc-gee
     networks:
       - odc
     restart: "no"

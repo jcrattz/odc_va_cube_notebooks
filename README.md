@@ -1,23 +1,18 @@
 # Open Data Cube (ODC) VA Cube Notebooks
-The ODC VA Cube Notebooks are for the Virginia Open Data Cube project.
 
-This repository includes several example notebooks in the `./notebooks`
-directory. We suggest starting with
-[VA_Riparian_Buffer_Landsat_GEE.ipynb](https://github.com/ceos-seo/odc-colab/blob/master/notebooks/VA_Riparian_Buffer_Landsat_GEE.ipynb).
+The ODC VA Cube Notebooks are Jupyter Notebooks for the Virginia Open Data Cube project.
 
-Some notebooks - including the one suggested above - make use of Google Earth Engine data. You must be registered as an Earth Engine developer. If not, you may submit an [application to Google](https://signup.earthengine.google.com/). These notebooks make use of the CEOS ODC-GEE project which can be found here: [https://github.com/ceos-seo/odc-gee](https://github.com/ceos-seo/odc-gee).
+For an overview of the available notebooks, see the [Notebooks Overview](docs/notebooks_overview.md) document.
 
-TODO: Explain how to set GEE credentials.
+## Installation
+-------
 
-<!-- They will require some user interaction for Google authentication, and the user needs to be registered as an Earth Engine developer.-->
+First follow the instructions in the [Docker Installation Guide](https://github.com/ceos-seo/data_cube_ui/blob/master/docs/docker_install.md) if you do not have Docker installed yet.
 
-**Note:** The `notebooks` use global datasets obtained from GEE
-using [ODC-GEE real-time indexing
-capabilities](https://github.com/ceos-seo/odc-gee#real-time-indexing).
-ODC products that retrieve data from GEE are suffixed with `_google`. Other GEE datasets may also be used by
-including an `asset` parameter in the `dc.load` as shown in the README of the
-ODC-GEE project.
+Follow the instructions in the [Open Data Cube Database Installation Guide](https://github.com/ceos-seo/data_cube_ui/blob/master/docs/odc_db_setup.md) to setup the Open Data Cube (ODC) database.
 
-## Notebooks
+Follow the instructions in the [Operation Manual](docs/notebooks_operation_manual.md) to set up and operate the Jupyter Notebook environment.
 
-The notebooks currently in the `notebooks/dev` directory are from the CEOS ODC-Colab project - an initiative to demonstrate ODC on Google Colab (see [here](https://github.com/ceos-seo/odc-colab)). These notebooks will not appear in the production (`prod`) environment.
+Some notebooks - generally prefixed with `_GEE` - make use of Google Earth Engine data. You must be registered as an Earth Engine developer. If not, you may submit an [application to Google](https://signup.earthengine.google.com/). These notebooks make use of the CEOS ODC-GEE project which can be found here: [https://github.com/ceos-seo/odc-gee](https://github.com/ceos-seo/odc-gee).
+
+You will also need [GEE service account credentials](https://developers.google.com/earth-engine/guides/service_account) - specifically the private key JSON file.
