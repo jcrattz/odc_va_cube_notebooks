@@ -1,6 +1,9 @@
 ARG BASE_IMG
 FROM ${BASE_IMG}
 
+WORKDIR ${ROOT_DIR}
+
+# Install the ODC-GEE package.
 COPY odc_gee odc_gee
 USER root
 RUN cd odc_gee; python3 setup.py build && python3 setup.py install
