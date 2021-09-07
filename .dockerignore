@@ -1,2 +1,4 @@
-notebooks/dev
+.git
+**/*.tif
 odc_gee/config
+notebooks/dev

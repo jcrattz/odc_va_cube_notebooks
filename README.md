@@ -13,7 +13,7 @@ First follow the instructions in the [Docker Installation Guide](https://github.
 
 Follow the instructions in the [Open Data Cube Database Installation Guide](https://github.com/ceos-seo/data_cube_ui/blob/master/docs/odc_db_setup.md) to setup the Open Data Cube (ODC) database.
 
-Follow the instructions in the [Operation Manual](https://github.com/jcrattz/odc_va_cube_notebooks/blob/master/docs/notebooks_operation_manual.md) to set up and operate the Jupyter Notebook environment.
+Follow the instructions in the [Operation Manual](docs/notebooks_operation_manual.md) to set up and operate the Jupyter Notebook environment.
 
 Some notebooks - generally prefixed with `_GEE` - make use of Google Earth Engine (GEE) data. You must be registered as an Earth Engine developer. If not, you may submit an [application to Google](https://signup.earthengine.google.com/). These notebooks make use of the CEOS ODC-GEE project which can be found here: [https://github.com/ceos-seo/odc-gee](https://github.com/ceos-seo/odc-gee).
 

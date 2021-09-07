@@ -1,6 +1,9 @@
 SHELL:=/bin/bash
-docker_compose_prod = docker-compose --project-directory build/docker/prod -f build/docker/prod/docker-compose.yml
-docker_compose_dev = docker-compose --project-directory build/docker/dev -f build/docker/dev/docker-compose.yml
+# Set the project name to the path - making underscore the path separator.
+PWD=$(pwd)
+project_name=$(shell echo $${PWD//\//_})
+docker_compose_prod = docker-compose --project-directory build/docker/prod -f build/docker/prod/docker-compose.yml -p $(project_name)_prod
+docker_compose_dev = docker-compose --project-directory build/docker/dev -f build/docker/dev/docker-compose.yml -p $(project_name)_dev
 
 ODC_VER?=1.8.3
 
