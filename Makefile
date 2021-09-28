@@ -1,7 +1,7 @@
 SHELL:=/bin/bash
 # Set the project name to the path - making underscore the path separator.
-PWD=$(pwd)
-project_name=$(shell echo $${PWD//\//_})
+# Remove the leading slash and use lowercase since docker-compose will.
+project_name=$(shell PWD_var=$$(pwd); PWD_no_lead_slash=$${PWD_var:1}; echo $${PWD_no_lead_slash//\//_} | awk '{print tolower($$0)}' | cat)
 docker_compose_prod = docker-compose --project-directory build/docker/prod -f build/docker/prod/docker-compose.yml -p $(project_name)_prod
 docker_compose_dev = docker-compose --project-directory build/docker/dev -f build/docker/dev/docker-compose.yml -p $(project_name)_dev
 
@@ -25,6 +25,9 @@ DEV_COMMON_EXPRTS=export OUT_IMG=${DEV_OUT_IMG}; ${COMMON_EXPRTS}
 
 build:
 	${PROD_COMMON_EXPRTS}; $(docker_compose_prod) build
+
+build-no-cache:
+	${PROD_COMMON_EXPRTS}; $(docker_compose_prod) build --no-cache
 
 # Start the notebooks environment
 up:
@@ -68,6 +71,9 @@ pull:
 
 dev-build:
 	${DEV_COMMON_EXPRTS}; $(docker_compose_dev) build
+
+dev-build-no-cache:
+	${DEV_COMMON_EXPRTS}; $(docker_compose_dev) build --no-cache
 
 # Start the notebooks environment
 dev-up:
@@ -198,3 +204,8 @@ sudo-ubuntu-install-docker:
 	getent group docker || sudo groupadd docker
 	sudo usermod -aG docker ${USER}
 ## End Docker Misc ##
+
+## CI ##
+test-ci-local:
+	gitlab-runner exec shell build-no-cache
+## End CI ##
